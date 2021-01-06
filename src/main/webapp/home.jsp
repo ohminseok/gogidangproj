@@ -69,6 +69,11 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2" align=center>
+                        <b><font size=5>로그인 페이지</font></b>
+                    </td>
+                </tr>
+                <tr>
                     <td>아이디 : </td>
                     <td><input type="text" name="u_id"/></td>
                 </tr>
