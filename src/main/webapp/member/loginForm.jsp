@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<form name="loginform" action="./login.me" method="post">
+<form name="loginForm" action="./login.me" method="post">
 <center>
 <table border=1>
 	<tr>
@@ -18,8 +18,8 @@
 	<tr><td>비밀번호 : </td><td><input type="password" name="u_pw"/></td></tr>
 	<tr>
 		<td colspan="2" align=center>
-			<a href="javascript:loginform.submit()">로그인</a>&nbsp;&nbsp;
-			<a href="./joinform.me">회원가입</a>
+			<a href="javascript:loginForm.submit()">로그인</a>&nbsp;&nbsp;
+			<a href="./joinForm.me">회원가입</a>
 		</td>
 	</tr>
 </table>
