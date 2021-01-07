@@ -58,7 +58,7 @@
 					%>
 					<tr align=center>
 						<td colspan=2>
-							<a href="storeinfo.st?s_num=<%=vo1.getS_num()%>"><%=vo1.getThumbnail() %>
+							<a href="storeInfo.st?s_num=<%=vo1.getS_num()%>"><%=vo1.getThumbnail() %>
 						</td>
 					</tr>	
 					<%

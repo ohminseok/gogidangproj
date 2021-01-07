@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.gogidang.member.MemberVO;
+import com.spring.gogidang.menu.MenuService;
+import com.spring.gogidang.menu.MenuVO;
 
 
 @Controller
@@ -19,6 +21,8 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService storeService;
+	@Autowired
+	private MenuService menuService;
 	
 	/*
 	 * -form-
@@ -65,10 +69,13 @@ public class StoreController {
 	@RequestMapping(value = "/storeInfo.st")
 	public String shopInfo(StoreVO storeVO, Model model) {
 		StoreVO vo = storeService.storeInfo(storeVO);
+		ArrayList<MenuVO> menuList = menuService.getMenuList();
 		
 		model.addAttribute("storeVO", vo);
+		model.addAttribute("menuList",menuList);
 		
-		return "store/storeInfo";
+		
+		return "store/store_Info";
 	}
 	
 	/*

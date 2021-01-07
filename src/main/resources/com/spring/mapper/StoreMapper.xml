@@ -59,6 +59,8 @@
  	  	 	,s_hour =#{s_hour ,jdbcType=VARCHAR}
  	  	 	,delibery=#{delibery,jdbcType=VARCHAR}
  	  	where u_id=#{u_id,jdbcType=VARCHAR}
- 	</update> 
+ 	</update>
+ 	
+ 	
 
 </mapper>
