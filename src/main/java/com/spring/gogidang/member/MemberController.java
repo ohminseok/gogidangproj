@@ -129,6 +129,7 @@ public class MemberController {
 		model.addAttribute("event_list", event_list);
 		model.addAttribute("store_list", store_list);
 		model.addAttribute("review_list", review_list);
+		
 		return "member/main";
 	}
 }
