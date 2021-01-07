@@ -121,6 +121,7 @@ public class MemberController {
 		return null;
    }
   
+	// 더미데이터 넣기
 	@RequestMapping("/main.me") 
 	public String mainPage(Model model) throws Exception { 
 		ArrayList<EventVO> event_list = memberService.getEventList();
