@@ -121,6 +121,7 @@ public class MemberController {
 		return null;
    }
   
+	// 더미데이터 넣기
 	@RequestMapping("/main.me") 
 	public String mainPage(Model model) throws Exception { 
 		ArrayList<EventVO> event_list = memberService.getEventList();
@@ -129,6 +130,7 @@ public class MemberController {
 		model.addAttribute("event_list", event_list);
 		model.addAttribute("store_list", store_list);
 		model.addAttribute("review_list", review_list);
+		
 		return "member/main";
 	}
 }
