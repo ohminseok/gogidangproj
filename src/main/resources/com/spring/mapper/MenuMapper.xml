@@ -5,6 +5,30 @@
 <mapper namespace="com.spring.mapper.MenuMapper">
 	
 	<select id="getMenues" resultType="MenuVO">
-		SELECT * FROM menu_reg order by menu_num
+		SELECT * 
+		FROM menu_reg 
+		order by menu_num
 	</select> 
+	
+	<select id="selectMenu" resultType="MenuVO" parameterType="MenuVO">
+		SELECT * 
+		FROM menu_reg
+		where s_num=#{s_num}
+	</select>
+	
+	<select id="insertMenu" parameterType="MenuVO">
+		INSERT  
+		INTO menu_reg
+		values(#{menu_num,jdbcType=INTEGER}
+			  ,#{u_id,jdbcType=VARCHAR}
+			  ,#{s_num,jdbcType=VARCHAR}
+			  ,#{meat,jdbcType=INTEGER}
+			  ,#{menu_name,jdbcType=VARCHAR}
+			  ,#{price,jdbcType=VARCHAR}
+			  ,#{img,jdbcType=VARCHAR}
+			  ,#{grade,jdbcType=INTEGER}
+			  ,#{gram,jdbcType=INTEGER}
+				) 
+	</select>
+	
 </mapper>	

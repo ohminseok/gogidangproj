@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.gogidang.member.MemberVO;
 
-
-
-
-
 @Controller
 public class QnaController {
 	@Autowired

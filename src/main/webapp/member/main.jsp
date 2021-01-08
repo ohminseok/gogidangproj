@@ -5,11 +5,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%
-	MemberVO membervo = (MemberVO)session.getAttribute("MemberVO");
+	MemberVO membervo = (MemberVO)session.getAttribute("MemberVO"); 
 
 	String u_id=null;
 
-	if (membervo.getU_id() !=null){
+	if (membervo.getU_id() != null){
+
 		u_id=(String)membervo.getU_id();
 	}else{
 		out.println("<script>");
@@ -26,10 +27,19 @@
 <title>회원관리 시스템 메인 페이지</title>
 </head>
 <body>
-<a href="./loginForm.me">로그인</a>
-<a href="./joinForm.me">회원가입</a>
-<h3><%=u_id %> 로 로그인하셨습니다.</h3>
+<%if(membervo.getU_id() == "" || membervo.getU_id() == null) {%>
+<h2><a href="./loginForm.me">로그인</a></h2>
+<h2><a href="./joinForm.me">회원가입</a></h2>
+<%}else{%>
+<h2><%=u_id %> 로 로그인하셨습니다.</h2>
+<%}%>
 
+<%if(membervo.getSeller_key() == 1) {%>
+<h2><a href="./sellerupdateform.me">판매자 마이페이지</a></h2>
+
+<%}else{%>
+<h2><a href="./main.me">소비자 마이페이지</a></h2>
+<%}%>
 <center>
 	<h3>이벤트 메인사진</h3>
 			<table border=1 width=300>
