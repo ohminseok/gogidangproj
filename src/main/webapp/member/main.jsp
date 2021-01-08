@@ -10,6 +10,7 @@
 	String u_id=null;
 
 	if (membervo.getU_id() != null){
+
 		u_id=(String)membervo.getU_id();
 	}else{
 		out.println("<script>");

@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.gogidang.member.MemberVO;
+
 @Controller
 public class QnaController {
 	@Autowired
@@ -54,6 +56,7 @@ public class QnaController {
 	
 	@RequestMapping("qnawriteform.qn")
 	public String qnaInsertForm()  {
+		
 		return "qna/qna_board_write";
 	}
 	
@@ -78,7 +81,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/qnadetail.qn") 
-	public String getDetail(@RequestParam(value="qna_num", required=true) int qna_num, Model model) {
+	public String getDetail(@RequestParam(value="qna_num", required=true) int qna_num, Model model ) {
 		QnaVO qna = qnaService.getDetail(qna_num); 
 		
 		model.addAttribute("qna", qna);

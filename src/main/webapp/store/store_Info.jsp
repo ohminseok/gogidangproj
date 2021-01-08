@@ -4,10 +4,12 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>  
 <%@ page import="com.spring.gogidang.menu.*" %>
+<%@ page import="com.spring.gogidang.review.* " %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <%
 	ArrayList<MenuVO> menu_List = (ArrayList<MenuVO>)request.getAttribute("menuList");
+	ArrayList<ReviewVO> review_List = (ArrayList<ReviewVO>)request.getAttribute("reviewList");
 %>
 <html>
 <head>
@@ -48,6 +50,23 @@
 			<td>
 			</tr>
 			<%} %>
+		</tr>
+		
+		<tr>
+			<table border=1 align=cente>
+			<tr>
+			<%
+				for(int i=0; i<review_List.size(); i++)
+				{
+					ReviewVO vo1 =(ReviewVO)review_List.get(i);
+				
+			%>
+			<td><%=vo1.getPhoto1() %></td>
+			<td><%=vo1.getStar() %></td>
+			<td><%=vo1.getTitle() %>
+			<%} %>
+			</tr>
+			</table>
 		</tr>
 	</table>
 </body>
