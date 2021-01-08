@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.spring.gogidang.event.EventVO;
 import com.spring.gogidang.review.ReviewVO;
 import com.spring.gogidang.store.StoreVO;
@@ -61,11 +60,17 @@ public class MemberController {
 		return mov;
 	}
 	
+	@RequestMapping("/sellerupdateform.me") // response 쓰임새 다시확인
+	public String memberUpdateForm() throws Exception {	
+		
+		return "member/seller_updateForm";
+	}
+	
 	@RequestMapping("/login.me") 
 	public String userCheck(MemberVO memberVO, HttpSession session, HttpServletResponse response) throws Exception { 
 		
 		MemberVO vo = memberService.selectMember(memberVO);
-		
+	
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
@@ -124,13 +129,16 @@ public class MemberController {
 	// 더미데이터 넣기
 	@RequestMapping("/main.me") 
 	public String mainPage(Model model) throws Exception { 
+		
 		ArrayList<EventVO> event_list = memberService.getEventList();
 		ArrayList<StoreVO> store_list = memberService.getStoreList();
 		ArrayList<ReviewVO> review_list = memberService.getReviewList();
+		System.out.println("111111");
 		model.addAttribute("event_list", event_list);
 		model.addAttribute("store_list", store_list);
 		model.addAttribute("review_list", review_list);
-		
+		System.out.println("222222");
+		System.out.println(event_list.get(0).getEvent_num());
 		return "member/main";
 	}
 }

@@ -6,9 +6,6 @@ import java.util.List;
 
 import com.spring.gogidang.qna.QnaVO;
 
-
-
-
 public interface QnaMapper {
 	
 	public int getListCount(); 

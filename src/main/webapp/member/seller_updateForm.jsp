@@ -22,6 +22,10 @@
 <title>판매자 마이페이지</title>
 </head>
 <header><%=vo.getU_nick() %>님 안녕하세요.</header>
+<h2><a href="./storeRegForm.st">가게 정보</a></h2>
+<h2><a href="./menuRegForm.st">메뉴 정보</a></h2>
+<h2><a href="./storeRegForm.st">문의 관리</a></h2>
+<h2><a href="./storeRegForm.st">리뷰 관리</a></h2>
 <body>
 	<form name="updateform" action="./memberupdateprocess.me" method="post">
 		<center>

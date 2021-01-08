@@ -9,7 +9,6 @@
 <%
 	StoreVO vo = (StoreVO)session.getAttribute("StoreVO");
 	MemberVO memberVO = (MemberVO)session.getAttribute("MemberVO");	
-	
 %>
 <html>
 <head>
@@ -19,7 +18,11 @@
 </script>
 </head>
 <body>
-<header><%=memberVO.getU_id() %>님 </header>
+<header><%=memberVO.getU_nick() %>님 </header>
+<h2><a href="./storeRegForm.st">가게 정보</a></h2>
+<h2><a href="./menuRegForm.st">메뉴 정보</a></h2>
+<h2><a href="./storeRegForm.st">문의 관리</a></h2>
+<h2><a href="./storeRegForm.st">리뷰 관리</a></h2>
 <form name="storeform" action="./storeprocess.me" method="post">
 <center>
 <table border=1>

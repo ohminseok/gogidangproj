@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.gogidang.member.MemberVO;
 import com.spring.gogidang.menu.MenuService;
@@ -99,6 +100,7 @@ public class StoreController {
 	}
 	
 	// 가게 등록 form
+	
 	@RequestMapping("/storeRegForm.st")
 	public String registrationForm(StoreVO storeVO, HttpSession session) throws Exception {
 		
@@ -106,7 +108,7 @@ public class StoreController {
 		StoreVO vo = storeService.selectStore(storeVO);
 
 		session.setAttribute("StoreVO",vo);
-		return "store/store_registrationForm";
+		return "storesoo/store_registrationForm";
 	}
 	
 	// 가게 등록 + 수정
@@ -163,5 +165,63 @@ public class StoreController {
 		return null;
 		
 	}
+	
+	
+	@RequestMapping("/menuRegForm.st")
+	public String menuRegForm(StoreVO storeVO,MenuVO menuVO, HttpSession session, HttpServletResponse response ,Model model) throws Exception {
 
+		storeVO.setU_id(((MemberVO)session.getAttribute("MemberVO")).getU_id());
+		
+		StoreVO vo = storeService.selectStore(storeVO);
+		menuVO.setS_num(vo.getS_num());
+		
+		ArrayList<MenuVO> menuSelectList = menuService.selectMenu(menuVO);
+		
+		model.addAttribute("menuSelectList",menuSelectList);
+		model.addAttribute("StoreVO",vo);
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		
+		//사업자 번호 대신 가입승인 컬럼 가지고 비교해야됨 나중에 수정하기
+		if( vo == null || vo.getConfirm() == 0 || vo.getS_num() == "") {
+			
+			writer.write("<script>alert('가게정보 등록 먼저 하세요!!!!');" +"location.href = './storeRegForm.st';</script>");
+			
+		}else {
+
+			return "storesoo/menu_registrationForm";
+		}
+		 return null;
+	}
+	
+	@RequestMapping("/menuProcess.st")
+	public String menuProcess(MenuVO menuVO, HttpSession session , HttpServletResponse response) throws Exception {
+		
+		menuVO.setS_num(((StoreVO)session.getAttribute("StoreVO")).getS_num());
+		System.out.println(menuVO.getS_num());
+		menuVO.setU_id(((StoreVO)session.getAttribute("StoreVO")).getU_id());
+		int i = 0;
+		menuVO.setMenu_num(i++);
+		
+		int res = menuService.insertMenu(menuVO);
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		
+		if (res==1) {
+			
+			writer.write("<script>alert('메뉴등록 성공!!'); location.href='./menuRegForm.st';</script>");
+		}
+		else {
+			writer.write("<script>alert('가게등록 실패!!'); location.href='./menuRegForm.st';</script>");
+		}
+	
+		return null;
+	}
+	
+	
+	
 }

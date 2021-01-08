@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.gogidang.store.StoreVO;
 import com.spring.mapper.MenuMapper;
-import com.spring.mapper.StoreMapper;
 
 @Service("menuService") 
 public class MenuServiceImpl implements MenuService {
@@ -21,6 +21,21 @@ public class MenuServiceImpl implements MenuService {
 		ArrayList<MenuVO> menuList = new ArrayList<MenuVO>();
 		menuList = menuMapper.getMenues();
 		return menuList;
+	}
+	
+	@Override
+	public ArrayList<MenuVO> selectMenu(MenuVO menuVO) {
+		MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+		ArrayList<MenuVO> menuSelectList = new ArrayList<MenuVO>();
+		menuSelectList = menuMapper.selectMenu(menuVO);
+		return menuSelectList;
+	}
+	
+	@Override
+	public int insertMenu(MenuVO menuVO) {
+		MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+		int res = menuMapper.insertMenu(menuVO);
+		return res;
 	}
 
 }
