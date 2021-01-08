@@ -1,17 +1,19 @@
 <%@page import="com.spring.gogidang.store.StoreVO"%>
 <%@page import="com.spring.gogidang.event.EventVO"%>
 <%@page import="com.spring.gogidang.review.ReviewVO"%>
+<%@page import="com.spring.gogidang.member.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%
+	MemberVO membervo = (MemberVO)session.getAttribute("MemberVO");
 
 	String u_id=null;
 
-	if (session.getAttribute("u_id")!=null){
-		u_id=(String)session.getAttribute("u_id");
+	if (membervo.getU_id() !=null){
+		u_id=(String)membervo.getU_id();
 	}else{
 		out.println("<script>");
-		out.println("location.href='loginform.me'");
+		out.println("location.href='loginForm.me'");
 		out.println("</script>");
 	}
 	

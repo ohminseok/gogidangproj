@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="com.spring.gogidang.qna.*" %>
+<%@ page import="com.spring.gogidang.member.*" %>
 <%
-	String u_id = (String)session.getAttribute("u_id");
+	MemberVO membervo = (MemberVO)session.getAttribute("MemberVO");
+	String u_id=(String)membervo.getU_id();
 	QnaVO qna = (QnaVO)request.getAttribute("qna");
 %>
 

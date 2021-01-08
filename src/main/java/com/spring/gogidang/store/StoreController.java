@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.spring.gogidang.member.MemberVO;
 import com.spring.gogidang.menu.MenuService;
 import com.spring.gogidang.menu.MenuVO;
+import com.spring.gogidang.review.ReviewService;
+import com.spring.gogidang.review.ReviewVO;
 
 
 @Controller
@@ -23,6 +25,8 @@ public class StoreController {
 	private StoreService storeService;
 	@Autowired
 	private MenuService menuService;
+	@Autowired
+	private ReviewService reviewSerivce;
 	
 	/*
 	 * -form-
@@ -70,9 +74,12 @@ public class StoreController {
 	public String shopInfo(StoreVO storeVO, Model model) {
 		StoreVO vo = storeService.storeInfo(storeVO);
 		ArrayList<MenuVO> menuList = menuService.getMenuList();
+		ArrayList<ReviewVO> reviewList = reviewSerivce.reviewListAll();
 		
 		model.addAttribute("storeVO", vo);
 		model.addAttribute("menuList",menuList);
+		model.addAttribute("reviewList",reviewList);
+		System.out.println(reviewList.size());
 		
 		
 		return "store/store_Info";

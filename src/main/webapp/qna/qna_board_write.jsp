@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.spring.gogidang.member.*" %> 
 <!DOCTYPE html>
 <%
-	String u_id=(String)session.getAttribute("u_id");
+	MemberVO membervo = (MemberVO)session.getAttribute("MemberVO");
+	String u_id=(String)membervo.getU_id();
 %>
 <html>
 <head>
